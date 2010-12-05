@@ -1,3 +1,0 @@
-CHANGELOG for XBMC NPR Plugin (xbmcnpr)
-
-1.0.0:  Initial release.  Tested on Dharma RC2
