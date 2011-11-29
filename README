@@ -1,0 +1,28 @@
+= NPR on XBMC =
+
+This is a simple add-on to allow access to NPR streams on XBMC (Xbox
+Media Center).
+
+Currently the followin streams are supported:
+ * http://npr.ic.llnwd.net/stream/npr_live24
+ * http://sc9.sjc.llnw.net:80/stream/npr_music2
+
+= Notes =
+
+This plugin has been tested and verified to work on Dharma.  It is
+currently available through the official XBMC Add-on Repository.
+Thanks to chippyash for the great plugin tutorial
+
+= Install instructions =
+
+Download audio.NPR.zip file to your Home folder.  Navigate to:
+Settings --> Add-ons --> Install from Zip File Navigate to your Home
+folder and select audio.NPR.zip A pop-up should indicate that the
+add-on was installed correctly Navigate to: Music --> Files --> Music
+Add-ons Click the link to NPR Choose a stream to play. Press Stop on
+your remote ('X' on the keyboard) to stop playing.
+
+= Repo Notes =
+
+This repo is originally a fork of the code from
+http://xbmcnpr.googlecode.com/svn/trunk
