@@ -16,7 +16,7 @@
 # *
 
 
-import xbmc,xbmcaddon,xbmcplugin,xbmcgui,sys
+import sys,urlparse,xbmc,xbmcaddon,xbmcplugin,xbmcgui
 
 __XBMC_Revision__ = xbmc.getInfoLabel('System.BuildVersion')
 __settings__      = xbmcaddon.Addon(id='plugin.audio.npr')
@@ -28,67 +28,66 @@ __addonid__       = "plugin.audio.npr"
 __author__        = "Stieg,Fisslefink"
 
 
-def PLAY(url):
-  xbmc.Player().play(url)
+_IDS = [
+  1,
+  2,
+  151,
+]
 
-def get_params():
-        param = []
-        paramstring = sys.argv[2]
-        if len(paramstring) >= 2:
-                params = sys.argv[2]
-                cleanedparams = params.replace('?','')
-                if (params[-1] == '/'):
-                        params = params[0:-2]
-                pairsofparams = cleanedparams.split('&')
-                param = {}
-                for l in pairsofparams:
-                        splitparams = l.split('=')
-                        if len(splitparams) == 2:
-                                param[splitparams[0]] = splitparams[1]
+_ID_INFO = {
+  1 : {
+    'name' : __language__(30090),
+    'url'  : 'http://npr.ic.llnwd.net/stream/npr_live24',
+    },
+  2 : {
+    'name' : __language__(30091),
+    'url'  : 'http://sc9.sjc.llnw.net:80/stream/npr_music2',
+    },
+  151 : {
+    'name' : __language__(30092),
+    'url'  : 'http://www.kqed.org/radio/listen/kqedradio.pls',
+    },
+}
 
-        return param
+def play_station_id(sid):
+  station = _ID_INFO.get(int(sid))
+  print ("Playing %s at %s" % (station.get('name'), station.get('url')))
+  xbmc.Player().play(station['url'])
 
 
-params = get_params()
-stream = None
+def url_query_to_dict(url):
+  ''' Returns the URL query args parsed into a dictionary '''
+  param = {}
+  if url:
+    u = urlparse.urlparse(url)
+    for q in u.query.split('&'):
+      kvp = q.split('=')
+      param[kvp[0]] = kvp[1]
 
-try:
-        stream = int(params["stream"])
-except:
-        pass
-try:
-        firstrun = (int(sys.argv[1]) == 0)
-except:
-        pass
+  return param
 
-print "Selected stream: " + str(stream)
 
-if stream == None:
-        u = sys.argv[0]+"?stream=1"
-        liz = xbmcgui.ListItem(__language__(30090), iconImage="DefaultPlaylist.png", thumbnailImage="")
-        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
+def main():
+  params = url_query_to_dict(sys.argv[2])
+  station_id = params.get('id')
 
-        u = sys.argv[0]+"?stream=2"
-        liz = xbmcgui.ListItem(__language__(30091), iconImage="DefaultPlaylist.png", thumbnailImage="")
-        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
+  if station_id:
+    print("Station #%s selected" % station_id)
+    play_station_id(station_id)
+  else:
+    print("No station selected.")
+    for i in _IDS:
+      u = sys.argv[0] + "?id=" + str(i)
+      station = _ID_INFO.get(i)
+      liz = xbmcgui.ListItem(station.get('name'),
+                             iconImage="DefaultPlaylist.png",
+                             thumbnailImage="")
+      xbmcplugin.addDirectoryItem(handle = int(sys.argv[1]),
+                                  url = u,listitem = liz,
+				  isFolder = False)
 
-        u = sys.argv[0]+"?stream=3"
-        liz = xbmcgui.ListItem(__language__(30092), iconImage="DefaultPlaylist.png", thumbnailImage="")
-        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
-        xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
-elif stream == 1:
-        print "Playing stream 1"
-        _url = 'http://npr.ic.llnwd.net/stream/npr_live24'
-        PLAY(_url)
-
-elif stream == 2:
-        print "Playing stream 2"
-        _url = 'http://sc9.sjc.llnw.net:80/stream/npr_music2'
-        PLAY(_url)
-
-elif stream == 3:
-        print "Playing stream 3"
-        _url = 'http://www.kqed.org/radio/listen/kqedradio.pls'
-        PLAY(_url)
+# Enter here.
+main()
