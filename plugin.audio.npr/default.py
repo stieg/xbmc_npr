@@ -28,7 +28,7 @@ __version__       = __settings__.getAddonInfo('version')
 __cwd__           = __settings__.getAddonInfo('path')
 __addonname__     = "NPR - National Public Radio"
 __addonid__       = "plugin.audio.npr"
-__author__        = "Stieg,Fisslefink"
+__author__        = "Stieg"
 
 
 ## {{{ http://code.activestate.com/recipes/577305/ (r1)
@@ -116,7 +116,6 @@ def get_station_data(sid = 0):
     }
 
   params = urllib.urlencode(query)
-  print "URL = " + url + "?" + params
   data = urllib.urlopen(url + "?" + params)
 
   tree = ElementTree()
@@ -130,7 +129,6 @@ def get_station_streams(tree):
   elist = tree.findall('station/url')
   for e in elist:
     url_id = e.get('typeId')
-    print "TypeID is %s" % url_id
     if  url_id == '10' or url_id == '15':
       title = e.get('title')
       text = e.text
@@ -204,7 +202,6 @@ def get_stations_in_state(stations, state):
 
 
 def main():
-  print "DEBUG: Params = " + " | ".join(sys.argv)
   stations = read_in_station_data(os.path.join(__home__, 'npr_stations.csv'))
   params = url_query_to_dict(sys.argv[2])
   state = params.get('state')
