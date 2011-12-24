@@ -16,10 +16,13 @@
 # *
 
 
-import sys,urlparse,xbmc,xbmcaddon,xbmcplugin,xbmcgui
+import xbmc,xbmcaddon,xbmcplugin,xbmcgui
+import csv, urllib, urlparse, sys
+from xml.etree.ElementTree import ElementTree
 
 __XBMC_Revision__ = xbmc.getInfoLabel('System.BuildVersion')
 __settings__      = xbmcaddon.Addon(id='plugin.audio.npr')
+__home__ = __settings__.getAddonInfo('path')
 __language__      = __settings__.getLocalizedString
 __version__       = __settings__.getAddonInfo('version')
 __cwd__           = __settings__.getAddonInfo('path')
@@ -28,31 +31,71 @@ __addonid__       = "plugin.audio.npr"
 __author__        = "Stieg,Fisslefink"
 
 
-_IDS = [
-  1,
-  2,
-  151,
-]
+def read_in_station_data(path):
+  # File format as follows in the CSV file:
+  #
+  # name|sid|call|icon|city|state|tagline
+  data = {}
+  with open(path, 'rt') as f:
+    reader = csv.DictReader(f, delimiter='|')
+    for d in reader:
+      data[int(d['sid'])] = d
 
-_ID_INFO = {
-  1 : {
-    'name' : __language__(30090),
-    'url'  : 'http://npr.ic.llnwd.net/stream/npr_live24',
-    },
-  2 : {
-    'name' : __language__(30091),
-    'url'  : 'http://sc9.sjc.llnw.net:80/stream/npr_music2',
-    },
-  151 : {
-    'name' : __language__(30092),
-    'url'  : 'http://www.kqed.org/radio/listen/kqedradio.pls',
-    },
-}
+    return data
 
-def play_station_id(sid):
-  station = _ID_INFO.get(int(sid))
-  print ("Playing %s at %s" % (station.get('name'), station.get('url')))
-  xbmc.Player().play(station['url'])
+
+def get_station_data(sid = 0):
+  ''' Acquire station data for the provided station ID '''
+  url = 'http://api.npr.org/stations.php'
+  query = {
+    'apiKey' : 'MDA4NTkxNTA1MDEzMjI0NDk1MzM0YjliOA001',
+    'id'     : sid,
+    }
+
+  params = urllib.urlencode(query)
+  print "URL = " + url + "?" + params
+  data = urllib.urlopen(url + "?" + params)
+
+  tree = ElementTree()
+  tree.parse(data)
+
+  return tree
+
+def get_station_streams(tree):
+  ''' Extract all station streams from etree of NPR station data '''
+  streams = {}
+  elist = tree.findall('station/url')
+  for e in elist:
+    url_id = e.get('typeId')
+    print "TypeID is %s" % url_id
+    if  url_id == '10' or url_id == '15':
+      title = e.get('title')
+      text = e.text
+      streams[title] = text
+
+  return streams
+
+
+def get_station_info(tree):
+  ''' Extract general station info from etree of NPR station data '''
+  data = {}
+  tags = [
+    'callLetters',
+    'band',
+    'name',
+    'frequency',
+    'marketCity',
+    'tagline',
+    ]
+
+  for tag in tags:
+    e = tree.find('station/' + tag)
+    if e is None:
+      data[tag] = ''
+    else:
+      data[tag] = e.text
+
+    return data
 
 
 def url_query_to_dict(url):
@@ -67,25 +110,81 @@ def url_query_to_dict(url):
   return param
 
 
+def get_list_of_states(stations):
+  ''' Returns a list of all available states '''
+  states = {}
+  for v in stations.itervalues():
+    state = v.get('state')
+    if state:
+      states[state] = 1
+    else:
+      print "Station ID %s has no state" % v.get('sid')
+
+  return states.keys()
+
+
+def get_stations_in_state(stations, state):
+  ''' Returns a dictionary of stations in the given state '''
+  state_st = {}
+  for v in stations.itervalues():
+    s = v.get('state')
+    if state == s:
+      name = v.get('name')
+      sid = v.get('sid')
+      state_st[name] = int(sid)
+
+  return state_st
+
+
 def main():
+  print "DEBUG: Params = " + " | ".join(sys.argv)
+  stations = read_in_station_data(os.path.join(__home__, 'npr_stations.csv'))
   params = url_query_to_dict(sys.argv[2])
-  station_id = params.get('id')
+  state = params.get('state')
+  stream = params.get('stream')
+  sid = params.get('id')
 
-  if station_id:
-    print("Station #%s selected" % station_id)
-    play_station_id(station_id)
-  else:
-    print("No station selected.")
-    for i in _IDS:
-      u = sys.argv[0] + "?id=" + str(i)
-      station = _ID_INFO.get(i)
-      liz = xbmcgui.ListItem(station.get('name'),
-                             iconImage="DefaultPlaylist.png",
-                             thumbnailImage="")
+  if stream:
+    # Play it.
+    print ("Playing stream %s" % stream)
+    xbmc.Player().play(stream)
+  elif sid:
+    # Display all streams for the station
+    print("Station #%s selected" % sid)
+    sd = get_station_data(sid)
+    streams = get_station_streams(sd)
+    print "DEBUG: " + repr(streams)
+    for k in streams.keys():
+      stream = streams[k]
+      u = sys.argv[0] + "?stream=" + stream
+      liz = xbmcgui.ListItem(k)
       xbmcplugin.addDirectoryItem(handle = int(sys.argv[1]),
-                                  url = u,listitem = liz,
-				  isFolder = False)
+                                  url = u, listitem = liz,
+                                  isFolder = False)
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
+  elif state:
+    # Display all stations in the state
+    print("State of %s selected" % state)
+    state_st = get_stations_in_state(stations, state)
+    for k in state_st.keys():
+      sid = state_st[k]
+      tni = stations[sid].get('icon')
+      u = sys.argv[0] + "?id=" + str(sid)
+      liz = xbmcgui.ListItem(k, thumbnailImage = tni)
+      xbmcplugin.addDirectoryItem(handle = int(sys.argv[1]),
+                                  url = u, listitem = liz,
+                                  isFolder = True)
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
+  else:
+    print("No state selected.")
+    states = get_list_of_states(stations)
+    for s in states:
+      u = sys.argv[0] + "?state=" + s
+      liz = xbmcgui.ListItem(s)
+      xbmcplugin.addDirectoryItem(handle = int(sys.argv[1]),
+                                  url = u, listitem = liz,
+                                  isFolder = True)
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 

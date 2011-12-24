@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.audio.npr"
        name="NPR (National Public Radio)"
-       version="1.2.0"
-       provider-name="Stieg,Fisslefink">
+       version="2.0.0"
+       provider-name="Stieg">
   <requires>
     <import addon="xbmc.python" version="1.0"/>
   </requires>
@@ -13,6 +13,6 @@
   <extension point="xbmc.addon.metadata">
     <platform>all</platform>
     <summary lang="en">NPR (National Public Radio)</summary>
-    <description lang="en">24 Hour NPR streams from Washington, DC</description>
+    <description lang="en">All available NPR streams.</description>
   </extension>
 </addon>

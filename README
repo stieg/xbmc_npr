@@ -26,3 +26,7 @@ your remote ('X' on the keyboard) to stop playing.
 
 This repo is originally a fork of the code from
 http://xbmcnpr.googlecode.com/svn/trunk
+
+= Devel Notes =
+* API keys at npr.org
+* http://api.npr.org/stations.php?apiKey=MDA4NTkxNTA1MDEzMjI0NDk1MzM0YjliOA001&id=151 - Station ala station code.
