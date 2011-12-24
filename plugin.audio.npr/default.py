@@ -193,9 +193,14 @@ def get_stations_in_state(stations, state):
     if state == s:
       sid = v.get('sid')
       city = v.get('city')
+      tag = v.get('tagline')
       if city is None:
 	city = 'Unknown'
-      name = "%s - %s" % (city, v.get('name'))
+      if tag is None or tag == 'None':
+	tag = ''
+      else:
+	tag = ' - ' + tag
+      name = "%s - %s%s" % (city, v.get('name'), tag)
       state_st[name] = int(sid)
 
   return state_st
