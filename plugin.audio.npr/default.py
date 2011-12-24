@@ -31,6 +31,69 @@ __addonid__       = "plugin.audio.npr"
 __author__        = "Stieg,Fisslefink"
 
 
+## {{{ http://code.activestate.com/recipes/577305/ (r1)
+__STATES = {
+        'AK': 'Alaska',
+        'AL': 'Alabama',
+        'AR': 'Arkansas',
+        'AS': 'American Samoa',
+        'AZ': 'Arizona',
+        'CA': 'California',
+        'CO': 'Colorado',
+        'CT': 'Connecticut',
+        'DC': 'District of Columbia',
+        'DE': 'Delaware',
+        'FL': 'Florida',
+        'GA': 'Georgia',
+        'GU': 'Guam',
+        'HI': 'Hawaii',
+        'IA': 'Iowa',
+        'ID': 'Idaho',
+        'IL': 'Illinois',
+        'IN': 'Indiana',
+        'KS': 'Kansas',
+        'KY': 'Kentucky',
+        'LA': 'Louisiana',
+        'MA': 'Massachusetts',
+        'MD': 'Maryland',
+        'ME': 'Maine',
+        'MI': 'Michigan',
+        'MN': 'Minnesota',
+        'MO': 'Missouri',
+        'MP': 'Northern Mariana Islands',
+        'MS': 'Mississippi',
+        'MT': 'Montana',
+        'NA': 'National',
+        'NC': 'North Carolina',
+        'ND': 'North Dakota',
+        'NE': 'Nebraska',
+        'NH': 'New Hampshire',
+        'NJ': 'New Jersey',
+        'NM': 'New Mexico',
+        'NV': 'Nevada',
+        'NY': 'New York',
+        'OH': 'Ohio',
+        'OK': 'Oklahoma',
+        'OR': 'Oregon',
+        'PA': 'Pennsylvania',
+        'PR': 'Puerto Rico',
+        'RI': 'Rhode Island',
+        'SC': 'South Carolina',
+        'SD': 'South Dakota',
+        'TN': 'Tennessee',
+        'TX': 'Texas',
+        'UT': 'Utah',
+        'VA': 'Virginia',
+        'VI': 'Virgin Islands',
+        'VT': 'Vermont',
+        'WA': 'Washington',
+        'WI': 'Wisconsin',
+        'WV': 'West Virginia',
+        'WY': 'Wyoming'
+}
+## end of http://code.activestate.com/recipes/577305/ }}}
+
+
 def read_in_station_data(path):
   # File format as follows in the CSV file:
   #
@@ -110,17 +173,18 @@ def url_query_to_dict(url):
   return param
 
 
-def get_list_of_states(stations):
-  ''' Returns a list of all available states '''
+def get_states_with_stations(stations):
+  ''' Returns a dict of all available states '''
   states = {}
   for v in stations.itervalues():
     state = v.get('state')
     if state:
-      states[state] = 1
-    else:
-      print "Station ID %s has no state" % v.get('sid')
+      state_full = __STATES.get(state)
+      if not state_full:
+	state_full = 'Unknown'
+      states[state_full] = state
 
-  return states.keys()
+  return states
 
 
 def get_stations_in_state(stations, state):
@@ -129,8 +193,11 @@ def get_stations_in_state(stations, state):
   for v in stations.itervalues():
     s = v.get('state')
     if state == s:
-      name = v.get('name')
       sid = v.get('sid')
+      city = v.get('city')
+      if city is None:
+	city = 'Unknown'
+      name = "%s - %s" % (city, v.get('name'))
       state_st[name] = int(sid)
 
   return state_st
@@ -153,8 +220,9 @@ def main():
     print("Station #%s selected" % sid)
     sd = get_station_data(sid)
     streams = get_station_streams(sd)
-    print "DEBUG: " + repr(streams)
-    for k in streams.keys():
+    keys = streams.keys()
+    keys.sort()
+    for k in keys:
       stream = streams[k]
       u = sys.argv[0] + "?stream=" + stream
       liz = xbmcgui.ListItem(k)
@@ -167,7 +235,9 @@ def main():
     # Display all stations in the state
     print("State of %s selected" % state)
     state_st = get_stations_in_state(stations, state)
-    for k in state_st.keys():
+    keys = state_st.keys()
+    keys.sort()
+    for k in keys:
       sid = state_st[k]
       tni = stations[sid].get('icon')
       u = sys.argv[0] + "?id=" + str(sid)
@@ -178,10 +248,12 @@ def main():
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
   else:
     print("No state selected.")
-    states = get_list_of_states(stations)
-    for s in states:
-      u = sys.argv[0] + "?state=" + s
-      liz = xbmcgui.ListItem(s)
+    states = get_states_with_stations(stations)
+    keys = states.keys()
+    keys.sort()
+    for k in keys:
+      u = sys.argv[0] + "?state=" + states[k]
+      liz = xbmcgui.ListItem(k)
       xbmcplugin.addDirectoryItem(handle = int(sys.argv[1]),
                                   url = u, listitem = liz,
                                   isFolder = True)
