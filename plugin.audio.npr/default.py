@@ -17,7 +17,7 @@
 
 
 import xbmc,xbmcaddon,xbmcplugin,xbmcgui
-import csv, urllib, urlparse, sys
+import csv, urllib, urlparse, os, sys
 from xml.etree.ElementTree import ElementTree
 
 __XBMC_Revision__ = xbmc.getInfoLabel('System.BuildVersion')
