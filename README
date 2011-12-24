@@ -1,32 +1,22 @@
 = NPR on XBMC =
 
-This is a simple add-on to allow access to NPR streams on XBMC (Xbox
-Media Center).
-
-Currently the followin streams are supported:
- * http://npr.ic.llnwd.net/stream/npr_live24
- * http://sc9.sjc.llnw.net:80/stream/npr_music2
+This add-on for XBMC allows for access to all available NPR streams.
+It achieves this by querying the API found at
+'http://api.npr.org/stations.php' for the streaming stations that each
+NPR station publishes.  To avoid saturating the site I have
+pre-compiled a list of all NPR stations (npr_stations.csv).  The
+script 'stations.py' can be used to generate a new csv file if
+necessary.
 
 = Notes =
 
-This plugin has been tested and verified to work on Dharma.  It is
-currently available through the official XBMC Add-on Repository.
-Thanks to chippyash for the great plugin tutorial
-
-= Install instructions =
-
-Download audio.NPR.zip file to your Home folder.  Navigate to:
-Settings --> Add-ons --> Install from Zip File Navigate to your Home
-folder and select audio.NPR.zip A pop-up should indicate that the
-add-on was installed correctly Navigate to: Music --> Files --> Music
-Add-ons Click the link to NPR Choose a stream to play. Press Stop on
-your remote ('X' on the keyboard) to stop playing.
+* This plugin has been tested and verified to work on the pre-releases
+  of Eden (12/23).
+* This release uses my API key to NPR.  This will change in the
+  future.
 
 = Repo Notes =
 
 This repo is originally a fork of the code from
 http://xbmcnpr.googlecode.com/svn/trunk
 
-= Devel Notes =
-* API keys at npr.org
-* http://api.npr.org/stations.php?apiKey=MDA4NTkxNTA1MDEzMjI0NDk1MzM0YjliOA001&id=151 - Station ala station code.
