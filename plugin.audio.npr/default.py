@@ -227,7 +227,8 @@ def main():
     for k in keys:
       stream = streams[k]
       u = sys.argv[0] + "?stream=" + stream
-      liz = xbmcgui.ListItem(k)
+      name = "Live Stream - %s" % k
+      liz = xbmcgui.ListItem(name)
       xbmcplugin.addDirectoryItem(handle = int(sys.argv[1]),
                                   url = u, listitem = liz,
                                   isFolder = False)

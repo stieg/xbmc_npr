@@ -72,9 +72,6 @@ def get_station_info(tree):
 
     return data
 
-data = read_in_station_data('npr_stations.csv')
-print data[1]
-
 minimum = 1
 maximum = 1325
 try:
@@ -92,6 +89,7 @@ if minimum > maximum:
 bad_ids = [435, 436, 437, 444, 945, 1180, 1282, 1283]
 
 ids = range(minimum, maximum + 1)
+print 'name|sid|call|icon|city|state|tagline'
 for i in ids:
     if i in bad_ids:
 	continue
@@ -102,10 +100,10 @@ for i in ids:
 	    or info['name'] is 'None' \
 	    or len(streams) == 0:
 	continue
-    print "%s||%d||%s||%s||%s||%s||%s" % (info['name'],
-					  i,
-					  info['callLetters'],
-					  info['image'],
-					  info['marketCity'],
-					  info['state'],
-					  info['tagline'])
+    print "%s|%d|%s|%s|%s|%s|%s" % (info['name'],
+				    i,
+				    info['callLetters'],
+				    info['image'],
+				    info['marketCity'],
+				    info['state'],
+				    info['tagline'])
