@@ -8,6 +8,38 @@ pre-compiled a list of all NPR stations that have a least one stream
 (npr_stations.csv).  The script 'stations.py' can be used to generate
 a new csv file if necessary.
 
+= Credit & Thanks =
+
+* Thanks to Fisslefink for the original code.  It helped a lot when
+  learning how to create this addon.
+
+= Installation =
+
+Note: Currently I do not have a working Zip that can be used with the
+      addon manager.  If you know how to do this on Eden please drop
+      me a note :).
+
+1. Install Git on your local machine.  See http://git-scm.com/ for
+   git installers and tutorials on how to use Git.
+
+2. Clone the repository to your local machine using the following
+   command:
+
+   git clone git://github.com/stieg/xbmc_npr.git
+
+3. Copy the "plugin.audio.npr" directory to you local XBMC addons
+   directory.  You can find these directories at the following
+   locations:
+
+   * Apple TV 1:      /Users/frontrow/Library/Application Support/XBMC/addons
+   * OSX 10.4+:       /Users/[user]/Library/Application Support/XBMC/addons
+   * Linux:           $HOME/.xbmc/addons
+   * Windows Vista/7: Users\[user]\AppData\Roaming\XBMC\addons
+   * Windows Xp:      Documents and Settings\[user]\Application Data\XBMC\addons
+
+4. Restart XBMC.  You should see the plugin available under the Audio
+   section.
+
 = Notes =
 
 * This plugin has been tested and verified to work on the pre-releases
