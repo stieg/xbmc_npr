@@ -16,7 +16,6 @@ KBAQ-FM|16|KBAQ|http://media.npr.org/images/stations/logos/kbaq_fm.gif|Phoenix|A
 KBIA-FM|17|KBIA|http://media.npr.org/images/stations/logos/kbia_fm.gif|Columbia|MO|Your NPR Station
 KBSU-FM|21|KBSU|http://media.npr.org/images/stations/logos/kbsu_fm.gif|Boise|ID|Enriching Your Life
 KBSM-FM|22|KBSM|http://media.npr.org/images/stations/logos/kbsm_fm.gif|McCall|ID|Enriching Your Life
-KBSW-FM|25|KBSW|http://media.npr.org/images/stations/logos/kbsw_fm.gif|Twin Falls|ID|Enriching Your Life
 KBSX-FM|26|KBSX|http://media.npr.org/images/stations/logos/kbsx_fm.gif|Boise|ID|Enriching Your Life
 KCBX-FM|27|KCBX|http://media.npr.org/images/stations/logos/kcbx_fm.gif|San Luis Obispo|CA|Listener Supported in San Luis Obispo, Santa Barbara and Monterey Counties
 KCFR-FM|33|KCFR|http://media.npr.org/images/stations/logos/kcfr_fm.gif|Denver|CO|In-depth news from Colorado, the nation and around the world
@@ -55,6 +54,7 @@ KERA-FM|78|KERA|http://media.npr.org/images/stations/logos/kera_fm.gif|Dallas|TX
 KEXP-FM|79|KEXP|http://media.npr.org/images/stations/logos/kexp_fm.gif|Seattle|WA|Where the Music Matters
 KGOU-FM|81|KGOU|http://media.npr.org/images/stations/logos/kgou_fm.gif|Norman|OK|Your NPR Source
 KROU-FM|82|KROU|http://media.npr.org/images/stations/logos/krou_fm.gif|Oklahoma City|OK|Your NPR Source
+Radio Kansas|83|None|None|Hutchinson|None|Listener-supported Public Radio
 KHCC-FM|84|KHCC|http://media.npr.org/images/stations/logos/khcc_fm.gif|Hutchinson|KS|Listener-supported Public Radio
 KHCD-FM|85|KHCD|http://media.npr.org/images/stations/logos/khcd_fm.gif|Salina|KS|Listener-supported Public Radio
 KHCT-FM|86|KHCT|http://media.npr.org/images/stations/logos/khct_fm.gif|Great Bend|KS|Listener-supported Public Radio
@@ -149,6 +149,7 @@ Texas Public Radio|188|None|None|San Antonio|None|Texas Public Radio
 KSTX-FM|189|KSTX|http://media.npr.org/images/stations/logos/kstx_fm.gif|San Antonio|TX|News & Views
 KTXI-FM|190|KTXI|http://media.npr.org/images/stations/logos/ktxi_fm.gif|Ingram|TX|Words & Music
 KSUT-FM|192|KSUT|http://media.npr.org/images/stations/logos/ksut_fm.gif|Ignacio|CO|Four Corners Public Radio
+KTEP-FM|194|KTEP|http://media.npr.org/images/stations/logos/ktep_fm.gif|El Paso|TX|National Public Radio for the Southwest
 KTOO-FM|195|KTOO|http://media.npr.org/images/stations/logos/ktoo_fm.gif|Juneau|AK|Juneau's 24 hour news station
 KUAC-FM|196|KUAC|http://media.npr.org/images/stations/logos/kuac_fm.gif|Fairbanks|AK|Public Radio for Alaska's Interior
 KUAF-FM|197|KUAF|http://media.npr.org/images/stations/logos/kuaf_fm.gif|Fayetteville|AR|KUAF - Your indispensable connection to the World
@@ -197,6 +198,7 @@ KUSU-FM|250|KUSU|http://media.npr.org/images/stations/logos/kusu_fm.gif|Logan|UT
 KUSR-FM|251|KUSR|http://media.npr.org/images/stations/logos/kusr_fm.gif|Logan|UT|Utah Public Radio
 KUT-FM|252|KUT|http://media.npr.org/images/stations/logos/kut_fm.gif|Austin|TX|Experience Austin Texas
 KUVO-FM|254|KUVO|http://media.npr.org/images/stations/logos/kuvo_fm.gif|Denver|CO|Denver's Jazz Oasis in the City
+Wyoming Public Radio Network|255|None|None|Laramie|None|Wyoming Public Radio Network
 KUWR-FM|256|KUWR|http://media.npr.org/images/stations/logos/kuwr_fm.gif|Laramie|WY|Wyoming Public Radio
 KBUW-FM|257|KBUW|http://media.npr.org/images/stations/logos/kbuw_fm.gif|Buffalo|WY|Wyoming Public Radio
 KDUW-FM|258|KDUW|http://media.npr.org/images/stations/logos/kduw_fm.gif|Douglas|WY|Wyoming Public Radio
@@ -215,7 +217,6 @@ KVCR-FM|270|KVCR|http://media.npr.org/images/stations/logos/kvcr_fm.gif|San Bern
 KVLU-FM|271|KVLU|http://media.npr.org/images/stations/logos/kvlu_fm.gif|Beaumont|TX|Member Supported Public Radio
 KVPR-FM|273|KVPR|http://media.npr.org/images/stations/logos/kvpr_fm.gif|Fresno|CA|NPR News and Cultural Arts for Central California
 KPRX-FM|274|KPRX|http://media.npr.org/images/stations/logos/kprx_fm.gif|Bakersfield|CA|NPR News and Cultural Arts for Central California
-KWBU-FM|275|KWBU|http://media.npr.org/images/stations/logos/kwbu_fm.gif|Waco|TX|Waco's NPR
 KWGS-FM|276|KWGS|http://media.npr.org/images/stations/logos/kwgs_fm.gif|Tulsa|OK|Public Radio 89.5 from The University of Tulsa
 KWIT-FM|277|KWIT|http://media.npr.org/images/stations/logos/kwit_fm.gif|Sioux City|IA|The Intelligent Alternative
 KWMU-FM|278|KWMU|http://media.npr.org/images/stations/logos/kwmu_fm.gif|St. Louis|MO|Award-winning in-depth news, insightful discussion, and entertaining programs
@@ -467,6 +468,7 @@ WQCS-FM|587|WQCS|http://media.npr.org/images/stations/logos/wqcs_fm.gif|Fort Pie
 WQED-FM|589|WQED|http://media.npr.org/images/stations/logos/wqed_fm.gif|Pittsburgh|PA|Classical 'QED 89.3
 WQEJ-FM|590|WQEJ|http://media.npr.org/images/stations/logos/wqej_fm.gif|Johnstown|PA|WQED changes lives.
 WQUB-FM|593|WQUB|http://media.npr.org/images/stations/logos/wqub_fm.gif|Quincy|IL|Public Radio in Quincy/Hannibal
+WRKF Public Radio|594|None|None|Baton Rouge|None|WRKF Public Radio
 WRKF-FM|595|WRKF|http://media.npr.org/images/stations/logos/wrkf_fm.gif|Baton Rouge|LA|Your NPR News Source
 WRTI-FM|597|WRTI|http://media.npr.org/images/stations/logos/wrti_fm.gif|Philadelphia|PA|Your Classical and Jazz Station
 WJAZ-FM|598|WJAZ|http://media.npr.org/images/stations/logos/wjaz_fm.gif|Summerdale|PA|The Number One Source for Classical and Jazz Music in Philadelphia and the Surrounding Areas!
@@ -601,6 +603,7 @@ KXGA-FM|805|KXGA|http://media.npr.org/images/stations/logos/kxga_fm.gif|Glennall
 KXKM-FM|806|KXKM|http://media.npr.org/images/stations/logos/kxkm_fm.gif|McCarthy|AK|Terminal Radio, Inc.
 KVMT-FM|807|KVMT|http://media.npr.org/images/stations/logos/kvmt_fm.gif|Montrose|CO|No. Fork Valley Public Radio, Inc.
 WEVJ-FM|808|WEVJ|http://media.npr.org/images/stations/logos/wevj_fm.gif|Jackson|NH|NHPR: News and Information for the Granite State
+KBSJ-FM|812|KBSJ|http://media.npr.org/images/stations/logos/kbsj_fm.gif|Jackpot|NV|Enriching Your Life
 KBSQ-FM|813|KBSQ|http://media.npr.org/images/stations/logos/kbsq_fm.gif|McCall|ID|Enriching Your Life
 KBSY-FM|814|KBSY|http://media.npr.org/images/stations/logos/kbsy_fm.gif|Burley|ID|Enriching Your Life
 KWOI-FM|815|KWOI|http://media.npr.org/images/stations/logos/kwoi_fm.gif|Carroll|IA|IPR enhances civic and cultural connections across the state, strengthening communities and reflecti1
@@ -622,7 +625,6 @@ KSJR-FM|832|KSJR|http://media.npr.org/images/stations/logos/ksjr_fm.gif|Collegev
 KWRV-FM|833|KWRV|http://media.npr.org/images/stations/logos/kwrv_fm.gif|St. Paul|ID|Minnesota Public Radio
 WIRR-FM|834|WIRR|http://media.npr.org/images/stations/logos/wirr_fm.gif|Virginia-Hibbing|MN|Minnesota Public Radio
 WMLS-FM|835|WMLS|http://media.npr.org/images/stations/logos/wmls_fm.gif|Grand Marais|MN|Minnesota Public Radio
-KBSK-FM|837|KBSK|http://media.npr.org/images/stations/logos/kbsk_fm.gif|McCall|ID|Enriching Your Life
 KMWS-FM|838|KMWS|http://media.npr.org/images/stations/logos/kmws_fm.gif|Mount Vernon|WA|Northwest Public Radio, Your NPR News Station
 KECC-FM|839|KECC|http://media.npr.org/images/stations/logos/kecc_fm.gif|La Junta|CO|Public Radio for Southern Colorado and a wee bit of Northern New Mexico
 KSMW-FM|840|KSMW|http://media.npr.org/images/stations/logos/ksmw_fm.gif|West Plains|MO|On the Web, On the Air, and Where You Live
@@ -657,7 +659,6 @@ KUYI-FM|903|KUYI|http://media.npr.org/images/stations/logos/kuyi_fm.gif|Hotevill
 KBBG-FM|909|KBBG|http://media.npr.org/images/stations/logos/kbbg_fm.gif|Waterloo|IA|None
 WNRK-FM|910|WNRK|http://media.npr.org/images/stations/logos/wnrk_fm.gif|Norwalk|OH|None
 KCJX-FM|912|KCJX|http://media.npr.org/images/stations/logos/kcjx_fm.gif|Carbondale|CO|None
-WSNC-FM|913|WSNC|http://media.npr.org/images/stations/logos/wsnc_fm.gif|Winston-Salem|NC|What we play is life
 KTCB-FM|916|KTCB|http://media.npr.org/images/stations/logos/ktcb_fm.gif|Tillamook|OR|None
 WWFM-FM|918|WWFM|http://media.npr.org/images/stations/logos/wwfm_fm.gif|Trenton|NJ|WWFM The Classical Network
 WVYA-FM|919|WVYA|http://media.npr.org/images/stations/logos/wvya_fm.gif|Williamsport|PA|Public Broadcasting for Northeastern Pennsylvania and the Central Susquehanna Valley
@@ -769,6 +770,7 @@ WBSL-FM|1095|WBSL|http://media.npr.org/images/stations/logos/wbsl_fm.gif|Sheffie
 KQOC-FM|1101|KQOC|http://media.npr.org/images/stations/logos/kqoc_fm.gif|Gleneden Beach|OR|All Classical FM
 KDWI-FM|1105|KDWI|http://media.npr.org/images/stations/logos/kdwi_fm.gif|Ottumwa|IA|IPR enhances civic and cultural connections across the state, strengthening communities and reflecti1
 KUNZ-FM|1106|KUNZ|http://media.npr.org/images/stations/logos/kunz_fm.gif|Ottumwa|IA|IPR enhances civic and cultural connections across the state, strengthening communities and reflecti1
+KING-FM|1115|KING|http://media.npr.org/images/stations/logos/king_fm.gif|Seattle|WA|None
 WVTI-FM|1116|WVTI|http://media.npr.org/images/stations/logos/wvti_fm.gif|Brighton/Island Pond|VT|VPR Classical on WVTI Island Pond/Brighton 106.9FM
 KMHD-FM|1117|KMHD|http://media.npr.org/images/stations/logos/kmhd_fm.gif|Gresham|OR|Jazz Radio
 WQXR-FM|1130|WQXR|http://media.npr.org/images/stations/logos/wqxr_fm.gif|Newark|NJ|The Classical Music Station of NYC
@@ -786,9 +788,11 @@ WHAA-FM|1192|WHAA|http://media.npr.org/images/stations/logos/whaa_fm.gif|Adams|W
 WITH-FM|1194|WITH|http://media.npr.org/images/stations/logos/with_fm.gif|Ithaca|NY|Different Radio
 WNNZ-FM|1196|WNNZ|http://media.npr.org/images/stations/logos/wnnz_fm.gif|Deerfield|MA|New England Public Radio
 WOSA-FM|1197|WOSA|http://media.npr.org/images/stations/logos/wosa_fm.gif|Grove Ctiy|OH|Classical Music All Day, Every Day
-KDFC-FM|1227|KDFC|http://media.npr.org/images/stations/logos/kdfc_fm.gif|Angwin|CA|None
+KDFC-FM|1227|KDFC|http://media.npr.org/images/stations/logos/kdfc_fm.gif|San Francisco|CA|None
 WHIL-FM|1229|WHIL|http://media.npr.org/images/stations/logos/whil_fm.gif|Mobile|AL|APR - News, Classics and More
 WNJT-FM|1243|WNJT|http://media.npr.org/images/stations/logos/wnjt_fm.gif|Trenton|NJ|NJN Public Radio
 WNJY-FM|1244|WNJY|http://media.npr.org/images/stations/logos/wnjy_fm.gif|Netcong|NJ|NJN Public Radio
 WNJO-FM|1245|WNJO|http://media.npr.org/images/stations/logos/wnjo_fm.gif|Toms River|NJ|NJN Public Radio
 KUHA-FM|1270|KUHA|http://media.npr.org/images/stations/logos/kuha_fm.gif|Houston|TX|24-Hour Classical Music From Houston
+WKCP-FM|1274|WKCP|http://media.npr.org/images/stations/logos/wkcp_fm.gif|Miami|FL|None
+WELH-FM|1298|WELH|http://media.npr.org/images/stations/logos/welh_fm.gif|Providence|RI|None
