@@ -1,1 +1,46 @@
-plugin.audio.npr/README
+= NPR on XBMC =
+
+This add-on for XBMC allows access to all available NPR streams and
+most podcasts.  It achieves this by querying the API found at
+'http://api.npr.org/stations.php' for the streaming stations that each
+NPR station publishes.  For purposes of speed I have
+pre-compiled a list of all NPR stations that have at least one live
+stream (npr_stations.csv).  The script 'stations.py' can be used to
+generate a new csv file if necessary.
+
+= Installation =
+
+1. Install Git on your local machine.  See http://git-scm.com/ for
+   git installers and tutorials on how to use Git.
+
+2. Clone the repository to your local machine using the following
+   command:
+
+   git clone git://github.com/stieg/xbmc_npr.git plugin.audio.npr
+
+3. Move the "plugin.audio.npr" directory to you local XBMC addons
+   directory.  You can find these directories at the following
+   locations:
+
+   * Apple TV 1:      /Users/frontrow/Library/Application Support/XBMC/addons
+   * OSX 10.4+:       /Users/[user]/Library/Application Support/XBMC/addons
+   * Linux:           $HOME/.xbmc/addons
+   * Windows Vista/7: Users\[user]\AppData\Roaming\XBMC\addons
+   * Windows Xp:      Documents and Settings\[user]\Application Data\XBMC\addons
+
+4. Restart XBMC.  You should see the plugin available under the Audio
+   section.
+
+= Notes =
+
+* This plugin has been tested and verified to work on the pre-releases
+  of Eden (March 3, 2012).
+* Report bugs & feature requests to the github page.
+
+= Credit & Thanks =
+
+* Thanks to Fisslefink for the original code.  It helped a lot when
+  learning how to create this addon.
+
+* This repo is originally a fork of the code from
+  http://xbmcnpr.googlecode.com/svn/trunk
