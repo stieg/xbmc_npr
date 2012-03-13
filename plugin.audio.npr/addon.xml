@@ -13,6 +13,6 @@
   <extension point="xbmc.addon.metadata">
     <platform>all</platform>
     <summary lang="en">NPR (National Public Radio)</summary>
-    <description lang="en">All available NPR streams.</description>
+    <description lang="en">All available NPR streams and most podcasts.</description>
   </extension>
 </addon>
